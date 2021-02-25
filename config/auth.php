@@ -46,6 +46,15 @@ return [
             'provider' => 'users',
             'hash' => false,
         ],
+
+        'admin' => [
+            'driver' => 'session',
+            'provider' => 'administradores',
+        ],
+        'atleta' => [
+            'driver' => 'session',
+            'provider' => 'atletas',
+        ],
     ],
 
     /*
@@ -69,6 +78,16 @@ return [
         'users' => [
             'driver' => 'eloquent',
             'model' => App\Models\User::class,
+        ],
+
+        'administradores' => [
+            'driver' => 'administradores_auth',
+            'model' => App\Models\Administrador::class,
+        ],
+
+        'atletas' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Atleta::class,
         ],
 
         // 'users' => [
