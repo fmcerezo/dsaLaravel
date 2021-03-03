@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Temporada;
-use Illuminate\Http\Request;
+use App\Http\Requests\TemporadaPostRequest;
 
 class TemporadaController extends Controller
 {
@@ -14,7 +14,7 @@ class TemporadaController extends Controller
      */
     public function index()
     {
-        $temporadas = Temporada::all();
+        $temporadas = Temporada::orderBy('ano_inicio_temporada', 'DESC')->get();
         
         return view('admin.temporada.index',compact('temporadas'));
     }
@@ -35,7 +35,7 @@ class TemporadaController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(TemporadaPostRequest $request)
     {
         $temporada = new Temporada();
         foreach ($temporada->getFillable() as $field)

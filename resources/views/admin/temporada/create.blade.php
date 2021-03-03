@@ -21,11 +21,11 @@
         <div class="form-group">
             @csrf
             <label for="ano_inicio_temporada">Año inicio temporada:</label>
-            <input type="number" class="form-control" id="ano_inicio_temporada" name="ano_inicio_temporada" required/>
+            <input type="number" class="form-control" id="ano_inicio_temporada" name="ano_inicio_temporada" value="{{ old('ano_inicio_temporada') }}" required/>
         </div>
         <div class="form-group">
             <label for="ano_fin_temporada">Año fin temporada:</label>
-            <input type="number" class="form-control" id="ano_fin_temporada" name="ano_fin_temporada" required/>
+            <input type="number" class="form-control" id="ano_fin_temporada" name="ano_fin_temporada" value="{{ old('ano_fin_temporada') }}" required/>
         </div>
         <button type="submit" class="btn btn-primary">Crear</button>
     </form>
