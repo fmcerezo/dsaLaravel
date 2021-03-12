@@ -2,10 +2,10 @@
 
 namespace App\Http\Requests;
 
-use App\Rules\TemporadaRule;
+use App\Rules\ControlRule;
 use Illuminate\Foundation\Http\FormRequest;
 
-class TemporadaPostRequest extends FormRequest
+class ControlPostRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,16 +24,23 @@ class TemporadaPostRequest extends FormRequest
      */
     public function rules()
     {
+        $controlRule = new ControlRule($this);
+
         return [
-            'ano_inicio_temporada' => [
+            'id_temporada' => 'bail|required|integer',
+            'fecha_celebracion' => [
                 'bail',
-                'integer',
                 'required',
-                'min:1900',
-                'unique:App\Models\Temporada,ano_inicio_temporada',
-                new TemporadaRule($this->ano_fin_temporada)
+                'date',
+                $controlRule
             ],
-            'ano_fin_temporada' => 'bail|integer|required|min:1900|unique:App\Models\Temporada,ano_fin_temporada',
+            'fecha_fin_inscripcion' => [
+                'bail',
+                'required',
+                'date',
+                $controlRule
+            ],
+            'descripcion' => 'required|max:100',
         ];
     }
 }

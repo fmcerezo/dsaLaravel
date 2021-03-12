@@ -12,11 +12,18 @@ return [
     | as the size rules. Feel free to tweak each of these messages here.
     |
     */
+    'date' => 'El campo ":attribute" debe ser una fecha válida.',
     'integer' => 'El campo ":attribute" debe ser un número.',
+    'max' => [
+        'string' => 'El campo ":attribute" no puede exceder los :max caracteres.',
+    ],
     'min' => [
         'numeric' => 'El campo ":attribute" no puede ser inferior a :min.',
     ],
+    'required' => 'El campo ":attribute" debe ser informado.',
 
+    'controlRule.fechaFueraTemporada' => 'La ":attribute" no pertenece a la temporada seleccionada.',
+    'controlRule.fechaInscripcionPosteriorCelebracion' => '":attribute" no puede ser posterior a la celebración del control.',
     'temporadaRule' => 'El año de fin de temporada debe ser el siguiente al año de inicio.',
    
     /*
@@ -31,8 +38,14 @@ return [
     */
 
     'attributes' => [
+        // Temporada
         'ano_inicio_temporada' => 'Año inicio temporada',
-        'ano_fin_temporada' => 'Año fin temporada'
+        'ano_fin_temporada' => 'Año fin temporada',
+
+        // Control
+        'fecha_celebracion' => 'Fecha de celebración',
+        'fecha_fin_inscripcion' => 'Fecha límite de inscripción',
+        'descripcion' => 'Descripción',
     ],
 
 ];

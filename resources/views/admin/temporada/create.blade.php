@@ -18,8 +18,8 @@
     </div><br />
   @endif
     <form method="post" action="{{ route('temporadas.store') }}">
+        @csrf
         <div class="form-group">
-            @csrf
             <label for="ano_inicio_temporada">Año inicio temporada:</label>
             <input type="number" class="form-control" id="ano_inicio_temporada" name="ano_inicio_temporada" value="{{ old('ano_inicio_temporada') }}" required/>
         </div>
