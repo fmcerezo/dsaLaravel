@@ -54,8 +54,11 @@ class TemporadaController extends Controller
      */
     public function destroy(Temporada $temporada)
     {
-        $temporada->delete();
-
-        return $this->index();
+        if (empty($temporada->controles()->first())) {
+            $temporada->delete();
+            return $this->index();
+        }
+        else
+            return redirect('temporadas')->withErrors([trans('validation.custom.id_temporada.tieneControles')]);
     }
 }

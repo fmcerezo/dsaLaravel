@@ -25,6 +25,23 @@ return [
     'controlRule.fechaFueraTemporada' => 'La ":attribute" no pertenece a la temporada seleccionada.',
     'controlRule.fechaInscripcionPosteriorCelebracion' => '":attribute" no puede ser posterior a la celebración del control.',
     'temporadaRule' => 'El año de fin de temporada debe ser el siguiente al año de inicio.',
+
+    /*
+    |--------------------------------------------------------------------------
+    | Custom Validation Language Lines
+    |--------------------------------------------------------------------------
+    |
+    | Here you may specify custom validation messages for attributes using the
+    | convention "attribute.rule" to name the lines. This makes it quick to
+    | specify a specific custom language line for a given attribute rule.
+    |
+    */
+
+    'custom' => [
+        'id_temporada' => [
+            'tieneControles' => 'La temporada que desea eliminar tiene controles.',
+        ],
+    ],
    
     /*
     |--------------------------------------------------------------------------
