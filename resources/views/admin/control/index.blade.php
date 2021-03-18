@@ -42,13 +42,18 @@
             @foreach($controles as $control)
             <tr>
                 <td>{{$control->id_control}}</td>
-                <td>{{$control->id_temporada}}</td>
+                <td>{{$control->temporada->descripcion}}</td>
                 <td>{{$control->descripcion}}</td>
                 <td>{{$control->fecha_celebracion}}</td>
                 <td>{{$control->fecha_fin_inscripcion}}</td>
                 <td>{{$control->activo}}</td>
                 <td>
-                    <form action="{{ route('controles.destroy', $control->id_control)}}" method="post">
+                    <a href="{{ route('controles.edit', $control->id_control) }}">
+                        <button class="btn btn-danger" type="submit">Modificar</button>
+                    </a>
+                </td>
+                <td>
+                    <form action="{{ route('controles.destroy', $control->id_control) }}" method="post">
                     @csrf
                     @method('DELETE')
                     <button class="btn btn-danger" type="submit">Borrar</button>

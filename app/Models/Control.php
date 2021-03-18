@@ -12,7 +12,7 @@ class Control extends Model
     public $timestamps = false;
 
     protected $fillable = [
-        'id_temporada',
+        'temporada_id_temporada',
         'fecha_celebracion',
         'fecha_fin_inscripcion',
         'descripcion',
@@ -21,4 +21,9 @@ class Control extends Model
 
     protected $primaryKey = "id_control";
     protected $table = 'controles';
+
+    public function temporada()
+    {
+        return $this->belongsTo(Temporada::class);
+    }
 }

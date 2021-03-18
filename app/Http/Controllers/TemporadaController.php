@@ -43,7 +43,7 @@ class TemporadaController extends Controller
         
         $temporada->save();
 
-        return $this->index();
+        return redirect('temporadas');
     }
     
     /**
@@ -56,7 +56,7 @@ class TemporadaController extends Controller
     {
         if (empty($temporada->controles()->first())) {
             $temporada->delete();
-            return $this->index();
+            return redirect('temporadas');
         }
         else
             return redirect('temporadas')->withErrors([trans('validation.custom.id_temporada.tieneControles')]);

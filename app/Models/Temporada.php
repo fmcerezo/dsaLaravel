@@ -19,6 +19,10 @@ class Temporada extends Model
     protected $primaryKey = "id_temporada";
 
     public function controles() {
-        return $this->hasMany(Control::class, 'id_temporada');
+        return $this->hasMany(Control::class);
+    }
+
+    public function getDescripcionAttribute() {
+        return $this->ano_inicio_temporada . '/' . $this->ano_fin_temporada;
     }
 }

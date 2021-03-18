@@ -20,10 +20,12 @@
     <form method="post" action="{{ route('controles.store') }}">
       @csrf
       <div class="form-group">
-        <label for="id_temporada">Temporada:</label>
-        <select class="form-control" id="id_temporada" name="id_temporada">
+        <label for="temporada_id_temporada">Temporada:</label>
+        <select class="form-control" id="temporada_id_temporada" name="temporada_id_temporada">
           @foreach ($temporadas as $temporada)
-              <option value="{{ $temporada->id_temporada }}">{{ $temporada->ano_inicio_temporada }} / {{ $temporada->ano_fin_temporada }}</option>
+              <option value="{{ $temporada->id_temporada }}" @if (old('temporada_id_temporada', 0) == $temporada->id_temporada) selected="" @endif>
+                {{ $temporada->ano_inicio_temporada }} / {{ $temporada->ano_fin_temporada }}
+              </option>
           @endforeach
         </select>
       </div>

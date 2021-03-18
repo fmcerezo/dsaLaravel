@@ -47,7 +47,7 @@ class ControlController extends Controller
         
         $control->save();
 
-        return $this->index();
+        return redirect('controles');
     }
 
     /**
@@ -69,7 +69,9 @@ class ControlController extends Controller
      */
     public function edit(Control $control)
     {
-        //
+        $temporadas = Temporada::orderBy('ano_inicio_temporada', 'DESC')->get();
+
+        return view('admin.control.edit', compact('temporadas', 'control'));
     }
 
     /**
@@ -79,9 +81,14 @@ class ControlController extends Controller
      * @param  \App\Models\Control  $control
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Control $control)
+    public function update(ControlPostRequest $request, Control $control)
     {
-        //
+        foreach ($control->getFillable() as $field)
+            $control->$field = $request->$field;
+        
+        $control->save();
+        
+        return redirect('controles');
     }
 
     /**
@@ -94,6 +101,6 @@ class ControlController extends Controller
     {
         $control->delete();
 
-        return $this->index();
+        return redirect('controles');
     }
 }

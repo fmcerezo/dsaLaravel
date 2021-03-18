@@ -27,7 +27,7 @@ class ControlPostRequest extends FormRequest
         $controlRule = new ControlRule($this);
 
         return [
-            'id_temporada' => 'bail|required|integer',
+            'temporada_id_temporada' => 'bail|required|integer',
             'fecha_celebracion' => [
                 'bail',
                 'required',

@@ -22,8 +22,8 @@ class ControlRule implements Rule
     {
         $this->controlPostRequest = &$control;
 
-        if ($control->request->has('id_temporada'))
-            $this->temporada = Temporada::find($control->request->get('id_temporada'));
+        if ($control->request->has('temporada_id_temporada'))
+            $this->temporada = Temporada::find($control->request->get('temporada_id_temporada'));
         else
             $this->temporada = new Temporada();
 
