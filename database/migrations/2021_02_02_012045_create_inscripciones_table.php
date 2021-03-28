@@ -15,14 +15,14 @@ class CreateInscripcionesTable extends Migration
     {
         Schema::create('inscripciones', function (Blueprint $table) {
             $table->increments('id_inscripcion');
-            $table->integer('id_control')->unsigned();
-            $table->foreign('id_control')->references('id_control')->on('controles');
-            $table->integer('id_licencia')->unsigned();
-            $table->foreign('id_licencia')->references('id_licencia')->on('licencias');
-            $table->integer('id_prueba')->unsigned();
-            $table->foreign('id_prueba')->references('id_prueba')->on('pruebas');
+            $table->integer('control_id_control')->unsigned();
+            $table->foreign('control_id_control')->references('id_control')->on('controles');
+            $table->integer('licencia_id_licencia')->unsigned();
+            $table->foreign('licencia_id_licencia')->references('id_licencia')->on('licencias');
+            $table->integer('prueba_id_prueba')->unsigned();
+            $table->foreign('prueba_id_prueba')->references('id_prueba')->on('pruebas');
             $table->float('marca')->nullable(false);
-            $table->unique(['id_control', 'id_licencia', 'id_prueba']);
+            $table->unique(['control_id_control', 'licencia_id_licencia', 'prueba_id_prueba'], 'inscripciones_id_control_id_licencia_id_prueba_unique');
         });
     }
 

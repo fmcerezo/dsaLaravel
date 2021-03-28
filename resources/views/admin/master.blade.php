@@ -6,7 +6,21 @@
 </head>
 
 <body>
-    @yield('header1')
+    <h1>
+    @switch(class_basename(Route::current()->controller))
+        @case('TemporadaController')
+            {{ __('messages.h1_temporadas') }}
+            @break
+
+        @case('ControlController')
+        @case('PruebaControlController')
+            {{ __('messages.h1_controles') }}
+            @break
+
+        @default
+            {{ __('messages.h1_default') }}
+    @endswitch
+    </h1>
     
     @if (auth()->guard('admin')->user())
         @include('admin.menu')

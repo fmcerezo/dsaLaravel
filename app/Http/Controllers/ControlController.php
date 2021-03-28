@@ -36,7 +36,7 @@ class ControlController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\ControlPostRequest  $request
      * @return \Illuminate\Http\Response
      */
     public function store(ControlPostRequest $request)
@@ -48,17 +48,6 @@ class ControlController extends Controller
         $control->save();
 
         return redirect('controles');
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Control  $control
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Control $control)
-    {
-        //
     }
 
     /**
@@ -77,7 +66,7 @@ class ControlController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\ControlPostRequest  $request
      * @param  \App\Models\Control  $control
      * @return \Illuminate\Http\Response
      */

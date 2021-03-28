@@ -1,9 +1,5 @@
 @extends('admin.master')
 
-@section('header1')
-    <h1>Gestión de controles</h1>
-@endsection
-
 @section('content')
 
     <div class="card-header">Listado de controles</div>
@@ -17,7 +13,7 @@
             </ul>
             </div><br />
         @endif
-        <a class="sinSubrayado block margenSuperiorCorto" href="{{ route('controles.create') }}">Crear control</a>
+        <a href="{{ route('controles.create') }}">Crear control</a>
     </div>
 </div>
 
@@ -47,6 +43,11 @@
                 <td>{{$control->fecha_celebracion}}</td>
                 <td>{{$control->fecha_fin_inscripcion}}</td>
                 <td>{{$control->activo}}</td>
+                <td>
+                    <a href="{{ route('pruebasControl.index', $control->id_control) }}">
+                        <button class="btn btn-danger" type="submit">Programar</button>
+                    </a>
+                </td>
                 <td>
                     <a href="{{ route('controles.edit', $control->id_control) }}">
                         <button class="btn btn-danger" type="submit">Modificar</button>

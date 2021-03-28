@@ -15,12 +15,12 @@ class CreateMarcasTable extends Migration
     {
         Schema::create('marcas', function (Blueprint $table) {
             $table->increments('id_marca');
-            $table->integer('id_temporada')->unsigned();
-            $table->foreign('id_temporada')->references('id_temporada')->on('temporadas');
-            $table->integer('id_licencia')->unsigned();
-            $table->foreign('id_licencia')->references('id_licencia')->on('licencias');
-            $table->integer('id_prueba')->unsigned();
-            $table->foreign('id_prueba')->references('id_prueba')->on('pruebas');
+            $table->integer('temporada_id_temporada')->unsigned();
+            $table->foreign('temporada_id_temporada')->references('id_temporada')->on('temporadas');
+            $table->integer('licencia_id_licencia')->unsigned();
+            $table->foreign('licencia_id_licencia')->references('id_licencia')->on('licencias');
+            $table->integer('prueba_id_prueba')->unsigned();
+            $table->foreign('prueba_id_prueba')->references('id_prueba')->on('pruebas');
             $table->float('marca')->nullable(false);
             $table->float('viento')->nullable(false);
             $table->dateTime('fecha')->nullable(false);

@@ -22,6 +22,11 @@ class Control extends Model
     protected $primaryKey = "id_control";
     protected $table = 'controles';
 
+    public function pruebas()
+    {
+        return $this->hasMany(PruebaControl::class);
+    }
+
     public function temporada()
     {
         return $this->belongsTo(Temporada::class);

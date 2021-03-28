@@ -1,9 +1,5 @@
 @extends('admin.master')
 
-@section('header1')
-    <h1>Gestión de temporadas</h1>
-@endsection
-
 @section('content')
 
     <div class="card-header">Listado de temporadas</div>
@@ -17,7 +13,7 @@
             </ul>
             </div><br />
         @endif
-        <a class="sinSubrayado block margenSuperiorCorto" href="{{ route('temporadas.create') }}">Crear temporada</a>
+        <a href="{{ route('temporadas.create') }}">Crear temporada</a>
     </div>
 </div>
 

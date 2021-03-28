@@ -1,9 +1,5 @@
 @extends('admin.master')
 
-@section('header1')
-	<h1>Gestión de controles</h1>
-@endsection
-
 @section('content')
 
 <div class="card-header">Modificación de control</div>

@@ -15,10 +15,10 @@ class CreateControlesTable extends Migration
     {
         Schema::create('controles', function (Blueprint $table) {
             $table->increments('id_control');
-            $table->integer('id_temporada')->unsigned();
-            $table->foreign('id_temporada')->references('id_temporada')->on('temporadas');
-            $table->dateTime('fecha_celebracion')->nullable(false);
-            $table->dateTime('fecha_fin_inscripcion')->nullable(false);
+            $table->integer('temporada_id_temporada')->unsigned();
+            $table->foreign('temporada_id_temporada')->references('id_temporada')->on('temporadas');
+            $table->date('fecha_celebracion')->nullable(false);
+            $table->date('fecha_fin_inscripcion')->nullable(false);
             $table->string('descripcion', 100)->nullable(false);
             $table->tinyInteger('activo')->nullable(false);
         });
