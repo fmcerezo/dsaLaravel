@@ -3,10 +3,11 @@
 @section('content')
 
     <div class="card-header">Programación del control:
-        <div>{{$control->descripcion}}</div>
-        <div>{{$control->fecha_celebracion}}</div>
-        <div>{{$control->fecha_fin_inscripcion}}</div>
-        <div>{{$control->activo}}</div>
+        <div>{{$control->descripcion}} a celebrar el {{$control->fecha_celebracion_formateada}}.
+        @if (!$control->activo)
+            <span class="text-danger">No activo.</span>
+        @endif    
+        </div>
     </div>
     <div class="card-body">
         @if ($errors->any())
@@ -19,45 +20,44 @@
             </div><br />
         @endif
         <a href="{{ route('pruebasControl.create', $control->id_control) }}">Agregar prueba</a>
+    
+        @if(session()->get('success'))
+            <div class="alert alert-success">
+            {{ session()->get('success') }}  
+            </div><br />
+        @endif
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <td>Hora</td>
+                    <td>Prueba</td>
+                    <td>Categoría</td>
+                    <td>Sexo</td>
+                    <td colspan="2">Operaciones</td>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach($pruebasControl as $pruebaControl)
+                <tr>
+                    <td>{{$pruebaControl->hora}}</td>
+                    <td>{{$pruebaControl->prueba->descripcion}}</td>
+                    <td>{{$pruebaControl->categoria->nombre}}</td>
+                    <td>{{$pruebaControl->sexo}}</td>
+                    <td>
+                        <a class="btn btn-primary" href="{{ route('pruebasControl.edit', $pruebaControl->id_prueba_control) }}">
+                            Modificar
+                        </a>
+                    </td>
+                    <td>
+                        <form action="{{ route('pruebasControl.destroy', $pruebaControl->id_prueba_control) }}" method="post">
+                        @csrf
+                        @method('DELETE')
+                        <button class="btn btn-danger" type="submit">Borrar</button>
+                        </form>
+                    </td>
+                </tr>
+                @endforeach
+            </tbody>
+        </table>
     </div>
-</div>
-
-<div>
-    @if(session()->get('success'))
-        <div class="alert alert-success">
-        {{ session()->get('success') }}  
-        </div><br />
-    @endif
-    <table class="table table-striped">
-        <thead>
-            <tr>
-                <td>Hora</td>
-                <td>Prueba</td>
-                <td>Categoría</td>
-                <td>Sexo</td>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach($pruebasControl as $pruebaControl)
-            <tr>
-                <td>{{$pruebaControl->hora}}</td>
-                <td>{{$pruebaControl->prueba->descripcion}}</td>
-                <td>{{$pruebaControl->categoria->nombre}}</td>
-                <td>{{$pruebaControl->sexo}}</td>
-                <td>
-                    <a href="{{ route('pruebasControl.edit', $pruebaControl->id_prueba_control) }}">
-                        <button class="btn btn-danger" type="submit">Modificar</button>
-                    </a>
-                </td>
-                <td>
-                    <form action="{{ route('pruebasControl.destroy', $pruebaControl->id_prueba_control) }}" method="post">
-                    @csrf
-                    @method('DELETE')
-                    <button class="btn btn-danger" type="submit">Borrar</button>
-                    </form>
-                </td>
-            </tr>
-            @endforeach
-        </tbody>
-    </table>
 @endsection

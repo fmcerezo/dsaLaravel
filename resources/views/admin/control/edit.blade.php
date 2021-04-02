@@ -38,11 +38,13 @@
         <label for="descripcion">Descripción:</label>
         <input type="text" class="form-control" id="descripcion" name="descripcion" value="{{ old('descripcion', $control->descripcion) }}" required/>
       </div>
-      <div class="form-group">
-        <label for="activo">Activo:</label>
-        <input type="checkbox" class="form-control" id="activo" name="activo" @if (old('activo', $control->activo)) checked="" @endif/>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" id="activo" name="activo" @if (old('activo', $control->activo)) checked="" @endif/>
+        <label class="form-check-label" for="activo">Activo</label>
       </div>
-      <button type="submit" class="btn btn-primary">Modificar</button>
+      <div class="py-3">
+        <button type="submit" class="btn btn-primary">Modificar</button>
+      </div>
     </form>
 </div>
 @endsection

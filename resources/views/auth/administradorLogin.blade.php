@@ -6,10 +6,11 @@
 
 @section('content')
 
-@if(session()->has('error'))
-    <div class="alert alert-danger">No te has identificado correctamente.</div>
-@endif
+<div class="card-header">Acceso de administrador</div>
 <div class="card-body">
+    @if(session()->has('error'))
+        <div class="alert alert-danger">No te has identificado correctamente.</div>
+    @endif
     <form id="frmLogin" method="post" action="{{ route('login') }}">
         @csrf
 
@@ -35,7 +36,7 @@
                     {{ __('Enviar') }}
                 </button>
 
-                <button type="reset" class="btn">
+                <button type="reset" class="btn btn-outline-primary">
                     {{ __('Limpiar') }}
                 </button>
             </div>
