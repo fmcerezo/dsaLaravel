@@ -28,6 +28,7 @@ Route::get('controles/create', 'App\Http\Controllers\ControlController@create')-
 Route::post('controles', 'App\Http\Controllers\ControlController@store')->name('controles.store')->middleware('auth:admin');
 Route::get('controles/{control}/edit', 'App\Http\Controllers\ControlController@edit')->name('controles.edit')->middleware('auth:admin');
 Route::put('controles/{control}', 'App\Http\Controllers\ControlController@update')->name('controles.update')->middleware('auth:admin');
+Route::post('controles/ajaxToggleActivo', 'App\Http\Controllers\ControlController@ajaxToggleActivo')->name('controles.ajaxToggleActivo')->middleware('auth:admin');
 Route::delete('controles/{control}', 'App\Http\Controllers\ControlController@destroy')->name('controles.destroy')->middleware('auth:admin');
 
 Route::get('controles/{control}/pruebas', 'App\Http\Controllers\PruebaControlController@index')->name('pruebasControl.index')->middleware('auth:admin');

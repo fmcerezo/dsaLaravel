@@ -4,6 +4,8 @@
 
     <div class="card-header">Listado de controles</div>
     <div class="card-body">
+        <div class="ajax-alert alert alert-danger d-none">
+        </div>
         @if ($errors->any())
             <div class="alert alert-danger">
             <ul>
@@ -42,9 +44,9 @@
                     <td>{{$control->fecha_fin_inscripcion_formateada}}</td>
                     <td>
                         @if ($control->activo)
-                            <i class="fa fa-check text-success" aria-hidden="true"></i>
+                            <i class="btn fa fa-check text-success" data-old_class="fa-check text-success" data-new_class="fa-times text-danger" data-id_control="{{$control->id_control}}" aria-hidden="true"></i>
                         @else
-                            <i class="fa fa-times text-danger" aria-hidden="true"></i>
+                            <i class="btn fa fa-times text-danger" data-old_class="fa-times text-danger" data-new_class="fa-check text-success" data-id_control="{{$control->id_control}}" aria-hidden="true"></i>
                         @endif
                     </td>
                     <td>
@@ -69,4 +71,48 @@
             </tbody>
         </table>
     </div>
+
+    <script>
+        $(document).ready(function() {
+            $(".fa-check, .fa-times").click(function(e){
+                e.preventDefault();
+
+                $("body").css("cursor", "wait");
+                $(".ajax-alert").removeClass("d-block");
+                $(".ajax-alert").addClass("d-none");
+                $(".ajax-alert").text("");
+                var crsf = $("input[name='_token']").val();
+                var invoker = $(this);
+                var id_control = invoker.data("id_control");
+
+                $.ajax({
+                    url: "{{ route('controles.ajaxToggleActivo') }}",
+                    type:"POST",
+                    data: {_token:crsf, id_control:id_control},
+                    success: function(data) {
+                        if (data == 1) {
+                            let oldClass = invoker.data("old_class");
+                            let newClass = invoker.data("new_class");
+                            invoker.removeClass(oldClass);
+                            invoker.addClass(newClass);
+                            invoker.data("old_class", newClass);
+                            invoker.data("new_class", oldClass);
+                        }
+                        else
+                            $(".ajax-alert").addClass("d-block").removeClass("d-none").append("<strong>No se ha podido modificar el estado.</strong>");
+                    },
+                    error: function(XMLHttpRequest, textStatus, errorThrown) {
+                        if (XMLHttpRequest.status == 401 || XMLHttpRequest.status == 403 || XMLHttpRequest.status == 419)
+                            location.href = '{{ route('logout') }}';
+                        else
+                            $(".ajax-alert").addClass("d-block").removeClass("d-none").append("<strong>" + XMLHttpRequest.statusText + "</strong>");
+                    },
+                    complete: function() {
+                        $("body").css("cursor", "default");
+                    }
+                });
+            });
+        });
+    </script>
+
 @endsection

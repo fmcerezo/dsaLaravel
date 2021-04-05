@@ -92,4 +92,21 @@ class ControlController extends Controller
 
         return redirect('controles');
     }
+
+    /**
+     * Toggle Activo state.
+     * 
+     * @param  \Illuminate\Http\Request  $request
+     * @return boolean
+     */
+    public function ajaxToggleActivo(Request $request)
+    {
+        $control = Control::find($request->id_control);
+        if ($control == null)
+            return false;
+        else {
+            $control->activo = !$control->activo;
+            return $control->save();
+        }
+    }
 }
