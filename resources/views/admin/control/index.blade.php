@@ -70,6 +70,7 @@
                 @endforeach
             </tbody>
         </table>
+        {!! $controles->links() !!}
     </div>
 
     <script>

@@ -16,7 +16,7 @@ class ControlController extends Controller
      */
     public function index()
     {
-        $controles = Control::orderBy('fecha_celebracion', 'DESC')->get();
+        $controles = Control::orderBy('fecha_celebracion', 'DESC')->paginate(10);
         
         return view('admin.control.index', compact('controles'));
     }
