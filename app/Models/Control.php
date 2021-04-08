@@ -23,6 +23,18 @@ class Control extends Model
     protected $primaryKey = "id_control";
     protected $table = 'controles';
 
+    /*    
+    Antes de eliminar el control se eliminan las pruebas que se hayan creado en el control,
+    para evitar el error de integridad referencial.
+    */
+    public static function boot() {
+        parent::boot();
+
+        static::deleting(function($control) {
+             $control->pruebas()->delete();
+        });
+    }
+
     public function getFechaCelebracionFormateadaAttribute()
     {
         $fecha = new Carbon($this->fecha_celebracion);

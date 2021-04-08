@@ -14,11 +14,18 @@ class ControlController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($idTemporada = 0)
     {
-        $controles = Control::orderBy('fecha_celebracion', 'DESC')->paginate(10);
+        if ($idTemporada > 0)
+            $controles = Control::where('temporada_id_temporada', $idTemporada)
+                                ->orderBy('fecha_celebracion', 'DESC')
+                                ->paginate(10);
+        else
+            $controles = Control::orderBy('fecha_celebracion', 'DESC')->paginate(10);
+
+        $temporadas = Temporada::orderBy('ano_inicio_temporada', 'DESC')->get();
         
-        return view('admin.control.index', compact('controles'));
+        return view('admin.control.index', compact('controles', 'idTemporada', 'temporadas'));
     }
 
     /**
@@ -47,7 +54,7 @@ class ControlController extends Controller
         
         $control->save();
 
-        return redirect('controles');
+        return redirect('controles/temporada/' . $control->temporada_id_temporada);
     }
 
     /**
@@ -77,7 +84,7 @@ class ControlController extends Controller
         
         $control->save();
         
-        return redirect('controles');
+        return redirect('controles/temporada/' . $control->temporada_id_temporada);
     }
 
     /**
@@ -90,7 +97,7 @@ class ControlController extends Controller
     {
         $control->delete();
 
-        return redirect('controles');
+        return redirect('controles/temporada/' . $control->temporada_id_temporada);
     }
 
     /**

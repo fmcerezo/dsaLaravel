@@ -23,7 +23,7 @@ Route::get('logout', 'App\Http\Controllers\Auth\AdministradorLoginController@log
 
 Route::get('administradorHome', 'App\Http\Controllers\AdministradorHomeController@home')->name('home')->middleware('auth:admin');
 
-Route::get('controles', 'App\Http\Controllers\ControlController@index')->name('controles.index')->middleware('auth:admin');
+Route::get('controles/temporada/{idTemporada?}', 'App\Http\Controllers\ControlController@index')->name('controles.index')->middleware('auth:admin');
 Route::get('controles/create', 'App\Http\Controllers\ControlController@create')->name('controles.create')->middleware('auth:admin');
 Route::post('controles', 'App\Http\Controllers\ControlController@store')->name('controles.store')->middleware('auth:admin');
 Route::get('controles/{control}/edit', 'App\Http\Controllers\ControlController@edit')->name('controles.edit')->middleware('auth:admin');

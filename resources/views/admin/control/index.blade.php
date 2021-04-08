@@ -26,7 +26,16 @@
             <thead>
                 <tr>
                     <td>ID</td>
-                    <td>Temporada</td>
+                    <td>Temporada
+                        <select class="form-control" id="temporada_id_temporada" name="temporada_id_temporada">
+                            <option value="0" @if ($idTemporada == 0) selected="" @endif>Todas</option>
+                            @foreach ($temporadas as $temporada)
+                                <option value="{{ $temporada->id_temporada }}" @if ($idTemporada == $temporada->id_temporada) selected="" @endif>
+                                  {{ $temporada->descripcion }}
+                                </option>
+                            @endforeach
+                          </select>
+                    </td>
                     <td>Descripción</td>
                     <td>Fecha de celebración</td>
                     <td>Fecha límite de inscripción</td>
@@ -75,7 +84,11 @@
 
     <script>
         $(document).ready(function() {
-            $(".fa-check, .fa-times").click(function(e){
+            $("#temporada_id_temporada").change(function() {
+                location.href ="{{ route('controles.index') }}/" + $(this).val();
+            });
+
+            $(".fa-check, .fa-times").click(function(e) {
                 e.preventDefault();
 
                 $("body").css("cursor", "wait");
