@@ -30,7 +30,7 @@
             </div>
         </div>
 
-        <div class="form-group row mb-0">
+        <div class="form-group row">
             <div class="col-md-8 offset-md-4">
                 <button type="submit" class="btn btn-primary">
                     {{ __('Enviar') }}
@@ -39,6 +39,11 @@
                 <button type="reset" class="btn btn-outline-primary">
                     {{ __('Limpiar') }}
                 </button>
+            </div>
+        </div>
+        <div class="form-group row">
+            <div class="col-md-8 offset-md-4">
+                Ir a la <a href="{{ route('welcome') }}">página de inicio</a>
             </div>
         </div>
     </form>
