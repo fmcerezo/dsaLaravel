@@ -1,6 +1,6 @@
 <header class="d-flex col-md-12 py-3">
     <ul class="col-md-8 nav nav-pills">
-      	<li class="nav-item"><a href="#" class="nav-link ">Atletas</a></li>
+      	<li class="nav-item"><a href="#" class="nav-link " title="{{ __('messages.pendiente') }}">Atletas</a></li>
       	<li class="nav-item"><a href="{{ route('controles.index') }}" class="nav-link {{ $activeControles }}">Controles</a></li>
       	<li class="nav-item"><a href="{{ route('temporadas.index') }}" class="nav-link {{ $activeTemporadas }}">Temporadas</a></li>
 	</ul>

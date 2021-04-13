@@ -13,7 +13,7 @@
             </ul>
             </div><br />
         @endif
-        <a href="{{ route('temporadas.create') }}">Crear temporada</a>
+        <a class="btn btn-outline-primary" href="{{ route('temporadas.create') }}">Crear temporada</a>
     
         @if(session()->get('success'))
             <div class="alert alert-success">
@@ -23,18 +23,14 @@
         <table class="table table-striped">
             <thead>
                 <tr>
-                    <td>ID</td>
-                    <td>Año inicio</td>
-                    <td>Año fin</td>
-                    <td>Operaciones</td>
+                    <th>Temporada</th>
+                    <th>Operaciones</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach($temporadas as $temporada)
                 <tr>
-                    <td>{{$temporada->id_temporada}}</td>
-                    <td>{{$temporada->ano_inicio_temporada}}</td>
-                    <td>{{$temporada->ano_fin_temporada}}</td>
+                    <td>{{$temporada->descripcion}}</td>
                     <td>
                         <form action="{{ route('temporadas.destroy', $temporada->id_temporada)}}" method="post">
                         @csrf

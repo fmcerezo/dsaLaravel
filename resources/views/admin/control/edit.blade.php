@@ -18,7 +18,7 @@
       @method('PUT')
       <div class="form-group">
         <label for="temporada_id_temporada">Temporada:</label>
-        <select class="form-control" id="temporada_id_temporada" name="temporada_id_temporada">
+        <select class="form-control col-6 col-md-3 col-lg-2" id="temporada_id_temporada" name="temporada_id_temporada">
           @foreach ($temporadas as $temporada)
             <option value="{{ $temporada->id_temporada }}" @if (old('temporada_id_temporada', $control->temporada_id_temporada) == $temporada->id_temporada) selected="" @endif>
               {{ $temporada->ano_inicio_temporada }} / {{ $temporada->ano_fin_temporada }}
@@ -28,11 +28,11 @@
       </div>
       <div class="form-group">
         <label for="fecha_celebracion">Fecha de celebración:</label>
-        <input type="date" class="form-control" id="fecha_celebracion" name="fecha_celebracion" value="{{ old('fecha_celebracion', $control->fecha_celebracion) }}" required/>
+        <input type="date" class="form-control col-6 col-md-3 col-lg-2" id="fecha_celebracion" name="fecha_celebracion" value="{{ old('fecha_celebracion', $control->fecha_celebracion) }}" required/>
       </div>
       <div class="form-group">
         <label for="fecha_fin_inscripcion">Fecha límite de inscripción:</label>
-        <input type="date" class="form-control" id="fecha_fin_inscripcion" name="fecha_fin_inscripcion" value="{{ old('fecha_fin_inscripcion', $control->fecha_fin_inscripcion) }}" required/>
+        <input type="date" class="form-control col-6 col-md-3 col-lg-2" id="fecha_fin_inscripcion" name="fecha_fin_inscripcion" value="{{ old('fecha_fin_inscripcion', $control->fecha_fin_inscripcion) }}" required/>
       </div>
       <div class="form-group">
         <label for="descripcion">Descripción:</label>

@@ -19,7 +19,7 @@
             </ul>
             </div><br />
         @endif
-        <a href="{{ route('pruebasControl.create', $control->id_control) }}">Agregar prueba</a>
+        <a class="btn btn-outline-primary" href="{{ route('pruebasControl.create', $control->id_control) }}">Agregar prueba</a>
     
         @if(session()->get('success'))
             <div class="alert alert-success">
@@ -29,11 +29,11 @@
         <table class="table table-striped">
             <thead>
                 <tr>
-                    <td>Hora</td>
-                    <td>Prueba</td>
-                    <td>Categoría</td>
-                    <td>Sexo</td>
-                    <td colspan="2">Operaciones</td>
+                    <th>Hora</th>
+                    <th>Prueba</th>
+                    <th class="d-none d-lg-table-cell">Categoría</th>
+                    <th>Sexo</th>
+                    <th>Operaciones</th>
                 </tr>
             </thead>
             <tbody>
@@ -41,15 +41,13 @@
                 <tr>
                     <td>{{$pruebaControl->hora}}</td>
                     <td>{{$pruebaControl->prueba->descripcion}}</td>
-                    <td>{{$pruebaControl->categoria->nombre}}</td>
+                    <td class="d-none d-lg-table-cell">{{$pruebaControl->categoria->nombre}}</td>
                     <td>{{$pruebaControl->sexo}}</td>
                     <td>
                         <a class="btn btn-primary" href="{{ route('pruebasControl.edit', $pruebaControl->id_prueba_control) }}">
                             Modificar
                         </a>
-                    </td>
-                    <td>
-                        <form action="{{ route('pruebasControl.destroy', $pruebaControl->id_prueba_control) }}" method="post">
+                        <form class="d-inline" action="{{ route('pruebasControl.destroy', $pruebaControl->id_prueba_control) }}" method="post">
                         @csrf
                         @method('DELETE')
                         <button class="btn btn-danger" type="submit">Borrar</button>

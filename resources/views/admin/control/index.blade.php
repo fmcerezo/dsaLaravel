@@ -15,7 +15,7 @@
             </ul>
             </div><br />
         @endif
-        <a href="{{ route('controles.create') }}">Crear control</a>
+        <a class="btn btn-outline-primary" href="{{ route('controles.create') }}">Crear control</a>
     
         @if(session()->get('success'))
             <div class="alert alert-success">
@@ -25,8 +25,7 @@
         <table class="table table-striped">
             <thead>
                 <tr>
-                    <td>ID</td>
-                    <td>Temporada
+                    <th class="col-lg-2 align-top">Temporada
                         <select class="form-control" id="temporada_id_temporada" name="temporada_id_temporada">
                             <option value="0" @if ($idTemporada == 0) selected="" @endif>Todas</option>
                             @foreach ($temporadas as $temporada)
@@ -35,23 +34,22 @@
                                 </option>
                             @endforeach
                           </select>
-                    </td>
-                    <td>Descripción</td>
-                    <td>Fecha de celebración</td>
-                    <td>Fecha límite de inscripción</td>
-                    <td>Activo</td>
-                    <td colspan="3">Operaciones</td>
+                    </th>
+                    <th class="col-lg-2 align-top">Descripción</th>
+                    <th class="col-lg-1 align-top d-none d-lg-table-cell">Fecha de celebración</th>
+                    <th class="col-lg-1 align-top d-none d-lg-table-cell">Límite de inscripción</th>
+                    <th class="col-lg-1 align-top d-none d-lg-table-cell">Activo</th>
+                    <th class="col-lg-5 align-top">Operaciones</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach($controles as $control)
                 <tr>
-                    <td>{{$control->id_control}}</td>
                     <td>{{$control->temporada->descripcion}}</td>
                     <td>{{$control->descripcion}}</td>
-                    <td>{{$control->fecha_celebracion_formateada}}</td>
-                    <td>{{$control->fecha_fin_inscripcion_formateada}}</td>
-                    <td>
+                    <td class="d-none d-lg-table-cell">{{$control->fecha_celebracion_formateada}}</td>
+                    <td class="d-none d-lg-table-cell">{{$control->fecha_fin_inscripcion_formateada}}</td>
+                    <td class="d-none d-lg-table-cell">
                         @if ($control->activo)
                             <i class="btn fa fa-check text-success" data-old_class="fa-check text-success" data-new_class="fa-times text-danger" data-id_control="{{$control->id_control}}" aria-hidden="true"></i>
                         @else
@@ -62,14 +60,10 @@
                         <a class="btn btn-primary" href="{{ route('pruebasControl.index', $control->id_control) }}">
                             Programar
                         </a>
-                    </td>
-                    <td>
                         <a class="btn btn-primary" href="{{ route('controles.edit', $control->id_control) }}">
                             Modificar
                         </a>
-                    </td>
-                    <td>
-                        <form action="{{ route('controles.destroy', $control->id_control) }}" method="post">
+                        <form class="d-inline" action="{{ route('controles.destroy', $control->id_control) }}" method="post">
                         @csrf
                         @method('DELETE')
                         <button class="btn btn-danger" type="submit">Borrar</button>

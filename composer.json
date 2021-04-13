@@ -1,7 +1,7 @@
 {
-    "name": "laravel/laravel",
+    "name": "laravel/FedAtletismo",
     "type": "project",
-    "description": "The Laravel Framework.",
+    "description": "Gestión de una federación de atletismo.",
     "keywords": [
         "framework",
         "laravel"
