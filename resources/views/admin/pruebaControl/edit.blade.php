@@ -11,11 +11,12 @@
             <li>{{ $error }}</li>
           @endforeach
       </ul>
-    </div><br />
+    </div><br>
   @endif
   <form method="post" action="{{ route('pruebasControl.update', $pruebaControl->id_prueba_control) }}">
     @csrf
     @method('PUT')
+    <input type="hidden" name="control_id_control" value="{{ $pruebaControl->control_id_control }}">
     <div class="form-group">
       <label for="prueba_id_prueba">Prueba:</label>
       <select class="form-control col-6 col-sm-4 col-md-3 col-lg-2" id="prueba_id_prueba" name="prueba_id_prueba">

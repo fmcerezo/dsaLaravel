@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\PruebaControlPostRequest;
 use App\Models\Categoria;
 use App\Models\Control;
 use App\Models\Prueba;
@@ -13,7 +14,7 @@ class PruebaControlController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @param App\Models\Control $control
+     * @param  \App\Models\Control $control
      * @return \Illuminate\Http\Response
      */
     public function index(Control $control)
@@ -26,7 +27,7 @@ class PruebaControlController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @param App\Models\Control $control
+     * @param  \App\Models\Control $control
      * @return \Illuminate\Http\Response
      */
     public function create(Control $control)
@@ -40,11 +41,11 @@ class PruebaControlController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param App\Models\Control $control
+     * @param  \App\Http\Requests\PruebaControlPostRequest $request
+     * @param  \App\Models\Control $control
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, Control $control)
+    public function store(PruebaControlPostRequest $request, Control $control)
     {
         $pruebaControl = new PruebaControl();
         $pruebaControl->control_id_control = $control->id_control;
@@ -60,7 +61,7 @@ class PruebaControlController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\PruebaControl  $pruebasControl
+     * @param  \App\Models\PruebaControl $pruebasControl
      * @return \Illuminate\Http\Response
      */
     public function edit(PruebaControl $pruebaControl)
@@ -74,11 +75,11 @@ class PruebaControlController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\PruebaControl  $pruebaControl
+     * @param  \App\Http\Requests\PruebaControlPostRequest $request
+     * @param  \App\Models\PruebaControl $pruebaControl
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, PruebaControl $pruebaControl)
+    public function update(PruebaControlPostRequest $request, PruebaControl $pruebaControl)
     {
         foreach ($pruebaControl->getFillable() as $field)
             if ($request->has($field))

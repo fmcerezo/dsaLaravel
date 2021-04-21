@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ControlPostRequest;
 use App\Models\Control;
 use App\Models\Temporada;
-use App\Http\Requests\ControlPostRequest;
 use Illuminate\Http\Request;
 
 class ControlController extends Controller

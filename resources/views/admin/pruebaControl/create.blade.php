@@ -11,10 +11,11 @@
             <li>{{ $error }}</li>
           @endforeach
       </ul>
-    </div><br />
+    </div><br>
   @endif
   <form method="post" action="{{ route('pruebasControl.store', $control->id_control) }}">
     @csrf
+    <input type="hidden" name="control_id_control" value="{{ $control->id_control }}">
     <div class="form-group">
       <label for="prueba_id_prueba">Prueba:</label>
       <select class="form-control col-6 col-sm-4 col-md-3 col-lg-2" id="prueba_id_prueba" name="prueba_id_prueba">
@@ -48,7 +49,7 @@
     </div>
     <div class="form-group">
       <label for="hora">Hora:</label>
-      <input type="time" class="form-control col-4 col-sm-3 col-md-2 col-lg-2" id="hora" name="hora" required/>
+      <input type="time" class="form-control col-4 col-sm-3 col-md-2 col-lg-2" id="hora" name="hora" @if (old('hora')) value="{{ old('hora') }}" @endif required/>
     </div>
     <button type="submit" class="btn btn-primary">Crear</button>
   </form>

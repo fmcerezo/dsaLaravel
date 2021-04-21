@@ -24,6 +24,7 @@ return [
 
     'controlRule.fechaFueraTemporada' => 'La ":attribute" no pertenece a la temporada seleccionada.',
     'controlRule.fechaInscripcionPosteriorCelebracion' => '":attribute" no puede ser posterior a la celebración del control.',
+    'pruebaControlRule' => 'La prueba indicada ya existe en el control',
     'temporadaRule' => 'El año de fin de temporada debe ser el siguiente al año de inicio.',
 
     /*

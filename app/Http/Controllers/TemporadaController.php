@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Temporada;
 use App\Http\Requests\TemporadaPostRequest;
+use App\Models\Temporada;
 
 class TemporadaController extends Controller
 {
