@@ -27,4 +27,4 @@ Esta aplicación se encuentra en desarrollo, se está realizando en PHP 7.4.2, L
 ## Autor
 
 Francisco Manuel Cerezo.
-Contacto en franciscomanuelcerezo@gmail.com o en [Linkedin](https://www.linkedin.com/in/fmcerezo/).
+Contacto en [Linkedin](https://www.linkedin.com/in/fmcerezo/).
