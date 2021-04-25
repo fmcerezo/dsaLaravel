@@ -15,6 +15,7 @@ Recuerda que tras descargar el proyecto debes:
 En este post de [Styde](https://styde.net/como-instalar-proyectos-existentes-de-laravel/) tienes los pasos de instalación ampliados.
 
 Finalmente, para echar un vistazo pon en marcha la aplicación con php artisan serve
+
 Puedes acceder al area de administración con admin / 1234
 
 
