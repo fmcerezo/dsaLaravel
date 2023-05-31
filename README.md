@@ -4,7 +4,7 @@
 
 Recuerda que tras descargar el proyecto debes:
 
-- Ejecutar composer install
+- Ejecutar composer update
 - Renombrar o copiar el fichero .env.example para tener un fichero .env
 - Generar un API key. Ejecuta php artisan key:generate
 - Crear una base de datos.
@@ -17,11 +17,6 @@ En este post de [Styde](https://styde.net/como-instalar-proyectos-existentes-de-
 Finalmente, para echar un vistazo pon en marcha la aplicación con php artisan serve
 
 Puedes acceder al area de administración con admin / 1234
-
-
-## Estado de la aplicación
-
-Esta aplicación se encuentra en desarrollo, se está realizando en PHP 7.4.2, Laravel 8 y MySql 8, y es una migración de una aplicación creada en PHP 5 sin uso de ningún framework.
 
 
 ## Autor
