@@ -63,6 +63,7 @@
                         <a class="btn btn-primary" href="{{ route('controles.edit', $control->id_control) }}">
                             Modificar
                         </a>
+                        <livewire:image-gallery :instance="$control" />
                         <form class="d-inline" action="{{ route('controles.destroy', $control->id_control) }}" method="post">
                         @csrf
                         @method('DELETE')

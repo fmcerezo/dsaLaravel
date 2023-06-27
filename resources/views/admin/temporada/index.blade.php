@@ -32,7 +32,8 @@
                 <tr>
                     <td>{{$temporada->descripcion}}</td>
                     <td>
-                        <form action="{{ route('temporadas.destroy', $temporada->id_temporada)}}" method="post">
+                        <livewire:image-gallery :instance="$temporada" />
+                        <form class="d-inline" action="{{ route('temporadas.destroy', $temporada->id_temporada)}}" method="post">
                         @csrf
                         @method('DELETE')
                         <button class="btn btn-danger" type="submit">Borrar</button>

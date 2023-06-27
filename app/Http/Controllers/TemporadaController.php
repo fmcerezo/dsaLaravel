@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Livewire\ImageGallery;
 use App\Http\Requests\TemporadaPostRequest;
 use App\Models\Temporada;
 
@@ -55,6 +56,7 @@ class TemporadaController extends Controller
     public function destroy(Temporada $temporada)
     {
         if (empty($temporada->controles()->first())) {
+            ImageGallery::emptyGallery($temporada);
             $temporada->delete();
             return redirect('temporadas');
         }

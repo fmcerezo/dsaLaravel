@@ -3,15 +3,9 @@
 namespace App\Models;
 
 use Carbon\Carbon;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
 
-class Control extends Model
+class Control extends ImageModel
 {
-    use HasFactory;
-
-    public $timestamps = false;
-
     protected $fillable = [
         'temporada_id_temporada',
         'fecha_celebracion',
@@ -25,13 +19,15 @@ class Control extends Model
 
     /*    
     Antes de eliminar el control se eliminan las pruebas que se hayan creado en el control,
+    también las imágenes asociadas,
     para evitar el error de integridad referencial.
     */
     public static function boot() {
         parent::boot();
 
         static::deleting(function($control) {
-             $control->pruebas()->delete();
+            $control->imagenes()->delete();
+            $control->pruebas()->delete();
         });
     }
 

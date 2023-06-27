@@ -10,6 +10,7 @@ Recuerda que tras descargar el proyecto debes:
 - Crear una base de datos.
 - Informar, en el fichero .env , los valores de DB_DATABASE , DB_USERNAME y DB_PASSWORD
 - Crea las tablas con php artisan migrate --seed
+- Ejecutar php artisan storage:link
 
 ¿Dudas?
 En este post de [Styde](https://styde.net/como-instalar-proyectos-existentes-de-laravel/) tienes los pasos de instalación ampliados.
