@@ -1,8 +1,8 @@
 <div class="d-flex justify-content-center align-items-center h-10">
-    <button wire:click="prepareForNewImage(true)" class="btn btn-secondary mr-5">
+    <button wire:click="prepareForNewImage(true)" class="btn btn-secondary mr-5" @click="show = false; showModal = false">
         Cerrar galería
     </button>
-    <button wire:click="editImage(0)" class="btn btn-primary mr-5">
+    <button wire:click="editImage(0)" class="btn btn-primary mr-5" @click="showModal = true">
         Nueva imagen
     </button>
     <button wire:click="empty" class="btn btn-danger">
@@ -23,7 +23,7 @@
                     <i class="fa fa-heart"
                         :class="{'heart-big': {{ $image->main }}, 'heart-medium': !{{ $image->main }}}"
                         aria-hidden="true" wire:click="toggleMain({{ $image->id }})"></i>
-                    <a wire:click="editImage({{ $image->id }})" class="btn btn-primary">Editar</a>
+                    <a wire:click="editImage({{ $image->id }})" class="btn btn-primary" @click="showModal = true">Editar</a>
                     <a wire:click="delete({{ $image->id }})" class="btn btn-danger">Borrar</a>
                 </div>
             </div>

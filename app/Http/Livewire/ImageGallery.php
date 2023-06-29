@@ -21,8 +21,6 @@ class ImageGallery extends Component
     public ImageModel $model;
     public AbstractImagen $image;
     public $photo;
-    public bool $show;
-    public bool $showModal;
 
     protected $rules = [
         'image.title' => 'required|string|max:250',
@@ -53,7 +51,6 @@ class ImageGallery extends Component
             $this->image = $this->fullClassName::find($this->idEdit);
             $this->image->path = Storage::url($this->image->path);
         }
-        $this->showModal = true;
     }
 
     public function empty()
@@ -86,10 +83,8 @@ class ImageGallery extends Component
         }
         
         if ($fullHide) {
-            $this->show = false;
             $this->resetPage();
         }
-        $this->showModal = false;
     }
 
     public function render()

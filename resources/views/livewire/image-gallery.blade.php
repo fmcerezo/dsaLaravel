@@ -1,11 +1,10 @@
-<div class="d-inline">
-    <button wire:click="$toggle('show')" class="btn btn-primary">Fotos</button>
-    @if ($show)
-    <div class="fixed-top w-100 h-100 bg-white">
+<div class="d-inline" x-data="{ show: false, showModal: false }">
+    <button class="btn btn-primary" @click="show = true">Fotos</button>
+    
+    <div class="fixed-top w-100 h-100 bg-white" x-show="show">
         @include('livewire.gallery')
         
-        @if ($showModal)
-        <div class="fixed-top modal-dialog modal-dialog-scrollable">
+        <div class="fixed-top modal-dialog modal-dialog-scrollable" x-show="showModal">
             <form wire:submit.prevent="save">
                 <div class="modal-content">
                     <div class="modal-body">
@@ -45,13 +44,12 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <button wire:click.prevent="prepareForNewImage(false)" class="btn btn-secondary">Cerrar</button>
-                        <button type="submit" class="btn btn-primary">Guardar</button>
+                        <button wire:click.prevent="prepareForNewImage(false)" class="btn btn-secondary" @click="showModal = false">Cerrar</button>
+                        <button type="submit" class="btn btn-primary" @click="showModal = false">Guardar</button>
                     </div>
                 </div>
             </form>
-        </div>
-        @endif
+        </div>        
     </div>
-    @endif
+    
 </div>
